@@ -1,5 +1,5 @@
 
-# Advisense Case Study-minimal Domain-Specific Language (DSL)
+# Advisense Case Study- Domain-Specific Language (DSL)
 
 This project implements a  DSL to evaluate  mathematical expressions using an Abstract Syntax Tree (AST). It supports numeric literals, basic arithmetic operations, and includes enhanced error handling and can be expaned to handle multipule statments in future.
 
