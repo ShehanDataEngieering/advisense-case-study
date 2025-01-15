@@ -63,7 +63,7 @@ Test cases can be run following command
  deno test
 ```
 
-![img.png](img.png)
+![img.png](screenshots/h.png)
 
 
 ## Appendix
