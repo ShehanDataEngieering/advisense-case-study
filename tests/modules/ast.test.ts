@@ -1,4 +1,4 @@
-import { assertEquals } from "jsr:@std/assert";
+import { assertEquals } from "https://deno.land/std@0.208.0/assert/mod.ts";
 
 import {
   BinaryOperationNode,
@@ -34,6 +34,6 @@ Deno.test("BinaryOperationNode should be initialized correctly", () => {
 
   assertEquals(binaryOp.type, "BinaryExpr");
   assertEquals(binaryOp.operator, "+");
-  assertEquals(binaryOp.left.value, 5);
-  assertEquals(binaryOp.right.value, 3);
+  assertEquals((binaryOp.left as NumericLiteral).value, 5);
+  assertEquals((binaryOp.right as NumericLiteral).value, 3);
 });

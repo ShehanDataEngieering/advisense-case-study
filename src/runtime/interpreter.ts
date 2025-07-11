@@ -117,10 +117,8 @@ export function evaluateASTNode(astNode: ASTNode): RuntimeVal {
       return evaluateProgramme(astNode as Program);
      * **/
     default:
-      console.error(
-        "This AST Node has not yet been setup for interpretation.",
-        astNode,
+      throw new Error(
+        `This AST Node has not yet been setup for interpretation: ${JSON.stringify(astNode)}`,
       );
-      Deno.exit(0);
   }
 }

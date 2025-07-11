@@ -1,4 +1,4 @@
-import { assert, assertEquals, assertThrows } from "jsr:@std/assert";
+import { assert, assertEquals, assertThrows } from "https://deno.land/std@0.208.0/assert/mod.ts";
 
 import {
   BinaryOperationNode,
@@ -14,8 +14,8 @@ Deno.test("evaluateASTNode: should evaluate numeric binary addition", () => {
   const binopNode: BinaryOperationNode = {
     type: "BinaryExpr",
     operator: "+",
-    left: { type: "NumericLiteral", value: 5 },
-    right: { type: "NumericLiteral", value: 3 },
+    left: { type: "NumericLiteral", value: 5 } as NumericLiteral,
+    right: { type: "NumericLiteral", value: 3 } as NumericLiteral,
   };
   const result: any = evaluateASTNode(binopNode);
   assertEquals(result, { type: "number", value: 8 } as NumberVal);
@@ -26,8 +26,8 @@ Deno.test("evaluateASTNode: should evaluate numeric binary subtraction", () => {
   const binopNode: BinaryOperationNode = {
     type: "BinaryExpr",
     operator: "-",
-    left: { type: "NumericLiteral", value: 5 },
-    right: { type: "NumericLiteral", value: 3 },
+    left: { type: "NumericLiteral", value: 5 } as NumericLiteral,
+    right: { type: "NumericLiteral", value: 3 } as NumericLiteral,
   };
   const result = evaluateASTNode(binopNode);
   assertEquals(result, { type: "number", value: 2 } as NumberVal);
@@ -38,8 +38,8 @@ Deno.test("evaluateASTNode: should evaluate binary comparison operation (>)", ()
   const binopNode: BinaryOperationNode = {
     type: "BinaryExpr",
     operator: ">",
-    left: { type: "NumericLiteral", value: 5 },
-    right: { type: "NumericLiteral", value: 3 },
+    left: { type: "NumericLiteral", value: 5 } as NumericLiteral,
+    right: { type: "NumericLiteral", value: 3 } as NumericLiteral,
   };
   const result = evaluateASTNode(binopNode);
   assertEquals(result, { type: "boolean", value: true } as BoolVal);
@@ -50,8 +50,8 @@ Deno.test("evaluateASTNode: should throw error for division by zero", () => {
   const binopNode: BinaryOperationNode = {
     type: "BinaryExpr",
     operator: "/",
-    left: { type: "NumericLiteral", value: 5 },
-    right: { type: "NumericLiteral", value: 0 },
+    left: { type: "NumericLiteral", value: 5 } as NumericLiteral,
+    right: { type: "NumericLiteral", value: 0 } as NumericLiteral,
   };
   assertThrows(
     () => {

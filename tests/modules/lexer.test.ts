@@ -1,4 +1,4 @@
-import { assertEquals, assertMatch } from "jsr:@std/assert";
+import { assertEquals, assertMatch } from "https://deno.land/std@0.208.0/assert/mod.ts";
 
 import { tokenize, TokenType } from "../../src/modules/lexer.ts";
 import { captureConsoleError } from "../utils/testUtils.ts";

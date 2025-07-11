@@ -50,10 +50,9 @@ export default class Parser {
   private hasCloseParenthesis() {
     const prev = this.shift();
     if (!prev || prev.type != TokenType.CloseParen) {
-      console.error(
+      throw new Error(
         "Unexpected token found inside parenthesised expression. Expected closing parenthesis.",
       );
-      Deno.exit(1);
     }
 
     return prev;
@@ -157,8 +156,7 @@ export default class Parser {
 
       // Unidentified Tokens and Invalid Code Reached
       default:
-        console.error("Unexpected token found during parsing!", this.first());
-        Deno.exit(1);
+        throw new Error(`Unexpected token found during parsing: ${JSON.stringify(this.first())}`);
     }
   }
 }
