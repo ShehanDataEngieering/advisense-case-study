@@ -33,8 +33,8 @@ export interface ASTNode {
  */
 export interface BinaryOperationNode extends ASTNode {
   type: "BinaryExpr";
-  left: NumericLiteral;
-  right: NumericLiteral;
+  left: ASTNode;
+  right: ASTNode;
   operator: string; // needs to be of type BinaryOperator
 }
 

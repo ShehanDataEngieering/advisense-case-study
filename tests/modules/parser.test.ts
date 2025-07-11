@@ -1,6 +1,6 @@
-import { assertEquals, assertThrows } from "jsr:@std/assert";
+import { assertEquals, assertThrows } from "https://deno.land/std@0.208.0/assert/mod.ts";
 import Parser from "../../src/modules/parser.ts";
-import { BinaryOperationNode, NullLiteral } from "../../src/modules/ast.ts";
+import { BinaryOperationNode, NullLiteral, NumericLiteral } from "../../src/modules/ast.ts";
 import { mockConsoleError } from "../utils/testUtils.ts";
 
 Deno.test("Parser: should parse basic addition", () => {
@@ -9,8 +9,8 @@ Deno.test("Parser: should parse basic addition", () => {
 
   const expectedAST: any = {
     type: "BinaryExpr",
-    left: { type: "NumericLiteral", value: 3 },
-    right: { type: "NumericLiteral", value: 2 },
+    left: { type: "NumericLiteral", value: 3 } as NumericLiteral,
+    right: { type: "NumericLiteral", value: 2 } as NumericLiteral,
     operator: "+",
   };
 
@@ -23,8 +23,8 @@ Deno.test("Parser: should parse subtraction", () => {
 
   const expectedAST: BinaryOperationNode = {
     type: "BinaryExpr",
-    left: { type: "NumericLiteral", value: 5 },
-    right: { type: "NumericLiteral", value: 3 },
+    left: { type: "NumericLiteral", value: 5 } as NumericLiteral,
+    right: { type: "NumericLiteral", value: 3 } as NumericLiteral,
     operator: "-",
   };
 
@@ -37,8 +37,8 @@ Deno.test("Parser: should parse multiplication", () => {
 
   const expectedAST: BinaryOperationNode = {
     type: "BinaryExpr",
-    left: { type: "NumericLiteral", value: 3 },
-    right: { type: "NumericLiteral", value: 4 },
+    left: { type: "NumericLiteral", value: 3 } as NumericLiteral,
+    right: { type: "NumericLiteral", value: 4 } as NumericLiteral,
     operator: "*",
   };
 
@@ -53,11 +53,11 @@ Deno.test("Parser: should parse expression with parentheses", () => {
     type: "BinaryExpr",
     left: {
       type: "BinaryExpr",
-      left: { type: "NumericLiteral", value: 3 },
-      right: { type: "NumericLiteral", value: 2 },
+      left: { type: "NumericLiteral", value: 3 } as NumericLiteral,
+      right: { type: "NumericLiteral", value: 2 } as NumericLiteral,
       operator: "+",
-    },
-    right: { type: "NumericLiteral", value: 4 },
+    } as BinaryOperationNode,
+    right: { type: "NumericLiteral", value: 4 } as NumericLiteral,
     operator: "*",
   };
 
@@ -70,8 +70,8 @@ Deno.test("Parser: should parse equality comparison", () => {
 
   const expectedAST: any = {
     type: "BinaryExpr",
-    left: { type: "NumericLiteral", value: 3 },
-    right: { type: "NumericLiteral", value: 3 },
+    left: { type: "NumericLiteral", value: 3 } as NumericLiteral,
+    right: { type: "NumericLiteral", value: 3 } as NumericLiteral,
     operator: "==",
   };
 
@@ -84,8 +84,8 @@ Deno.test("Parser: should parse greater than comparison", () => {
 
   const expectedAST: any = {
     type: "BinaryExpr",
-    left: { type: "NumericLiteral", value: 5 },
-    right: { type: "NumericLiteral", value: 2 },
+    left: { type: "NumericLiteral", value: 5 } as NumericLiteral,
+    right: { type: "NumericLiteral", value: 2 } as NumericLiteral,
     operator: ">",
   };
 
